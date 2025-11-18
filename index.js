@@ -3,6 +3,9 @@ const mongoose = require('mongoose')
 const productRoute = require('./routes/product.route.js');
 const app = express()
 
+// Load .env file
+require('dotenv').config();
+
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -14,10 +17,11 @@ app.get('/', (req, res) => {
     res.send('Hello from Simple CRUD API');
 });
 
-mongoose.connect("mongodb://localhost:27017/simple_api")
+mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         console.log("connected to database");
-        app.listen(3000, () => {
+        const PORT = process.env.PORT || 3000;
+        app.listen(PORT, () => {
             console.log("Server running on port 3000");
         });
     })

@@ -36,6 +36,7 @@ project-root/
 │   ├── product-model.js
 ├──routes/
 │   ├── product.route.js
+├── .env.example
 ├── .gitignore
 ├── index.js
 ├── package.json
